@@ -5,8 +5,8 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { Button, StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import NativeFunctionsModule from './specs/NativeFunctionsModule';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -14,7 +14,12 @@ function App() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
+      <View style={{ height: 80 }} />
+      <Button title="Call Function" onPress={() => {
+        NativeFunctionsModule.httpsCallable('testFunction', { data: { message: 'Hello, world!', nullType: null } }).then((result) => {
+          console.log(result);
+        });
+      }} />
     </View>
   );
 }
