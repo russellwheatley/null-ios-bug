@@ -18,6 +18,8 @@ function App() {
       <Button title="Call Function" onPress={() => {
         NativeFunctionsModule.httpsCallable('testFunction', { data: { message: 'Hello, world!', nullType: null } }).then((result) => {
           console.log(result);
+        }).catch((error) => {
+          console.log(error);
         });
       }} />
     </View>
