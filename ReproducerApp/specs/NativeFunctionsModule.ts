@@ -18,7 +18,7 @@ export interface Spec extends TurboModule {
    */
   httpsCallable(
     name: string,
-    data: { data: RequestData },
+    data: { data: Object },
   ): Promise<{ data: ResponseData }>;
 }
 
